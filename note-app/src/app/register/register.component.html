@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="r">
+    </div>
+    <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+        <h1 class="header">Kayıt Ol</h1>
+        <div class="box">
+            <div class="box">
+                <input type="text" class="input" id="name" formControlName="name" required>
+                <label for="email" class="placeholder">Ad Soyad</label>
+                @if(form.get("name")?.hasError('required') && form.get("name")?.touched){
+                <p class="err">Boş geçilemez</p>
+                }
+            </div>
+            <div class="box">
+                <input type="text" class="input" id="email" formControlName="email" required>
+                <label for="email" class="placeholder">Email</label>
+                @if(form.get("email")?.hasError('email') && form.get("email")?.touched){
+                <p class="err">Lütfen mail adresinizi doğru formatta giriniz</p>
+                }
+                @if(form.get("email")?.hasError('required') && form.get("email")?.touched){
+                <p class="err">Boş geçilemez</p>
+                }
+            </div>
+            <div class="box">
+                <input type="password" class="input" id="password" formControlName="password" name="password" required>
+                <label for="email" class="placeholder">Şifre</label>
+                @if(form.get("password")?.hasError('required') && form.get("password")?.touched){
+                <div class="err">Boş geçilemez</div>
+                }@if(form.get("password")?.hasError('minlength') && form.get("password")?.touched){
+                <div class="err">En az 6 karakter</div>
+                }
+            </div>
+            <div class="box">
+                <input type="password" class="input" id="password2" formControlName="password2" name="password2"
+                    required>
+                <label for="email" class="placeholder">Şifre Tekrar</label>
+                @if(form.get("password2")?.hasError('required') && form.get("password2")?.touched){
+                <div class="err">Boş geçilemez</div>
+                }@if(form.get("password2")?.hasError('minlength') && form.get("password2")?.touched){
+                <div class="err">En az 6 karakter</div>
+                }@else if(form.hasError('missmatch') && form.get("password2")?.touched){
+                <div class="err">Şifreler aynı değil</div>
+                }
+            </div>
+        </div>
+        <div class="box">
+            <button class="button" type="submit" [disabled]="!form.valid">Kayıt Ol</button>
+            <a class="button2" routerLink="/login">Giriş Yap</a>
+        </div>
+    </form>
+</div>

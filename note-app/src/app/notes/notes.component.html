@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="r"></div>
+    <div class="form">
+        <h1 class="header">Notlar</h1>
+        <button type="button" class="button btn" (click)="close()">Çıkış yap</button>
+        <div class="box">
+            @for (item of notes; track $index) {
+
+            <div class="note">
+                <div class="note2">
+                    <h1>{{item.header}}</h1>
+                    <p>{{item.content}}</p>
+                </div>
+                <div class="note-button-container">
+                    <button class="note-button"(click)="showDialog(item)" >D</button>
+                    <button class="note-button" (click)="deleteButton(item.id)">X</button>
+                </div>
+            </div>
+            }
+
+        </div>
+        <div class="box">
+            <button type="button" class="button" (click)="showNewDialog()">Not Ekle</button>
+        </div>
+    </div>
+
+
+
+    <dialog class="dialog">
+        <form class="form2" [formGroup]="form" (submit)="onsubmit()">
+            <h1 class="header2">{{title}}</h1>
+            <div class="box" style="margin-bottom: 156px;">
+                <div class="box">
+                    <input type="text" class="input" formControlName="header" required>
+                    <label for="email" class="placeholder">Başlık</label>
+                    @if(form.get("header")?.hasError('required') && form.get("header")?.touched){
+                    <p class="err">Boş geçilemez</p>
+                    }
+        
+                </div>
+                <div class="box">
+                    <textarea type="text" class="input" id="content" formControlName="content" required rows="4"></textarea>
+                    <label for="content" class="placeholder">İçerik</label>
+                    @if(form.get("content")?.hasError('required') && form.get("content")?.touched){
+                        <div class="err">Boş geçilemez</div>
+                        }
+                </div>
+        
+        
+            </div>
+            <div class="box">
+                <button class="button" type="submit" [disabled]="!form.valid">{{btn}}</button>
+            </div>
+        </form>
+    </dialog>
+</div>

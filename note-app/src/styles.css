@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    border: none;
+    outline: none;
+}
+
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #F2F2F2;
+    position: relative;
+    z-index: 0;
+}
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    width: 500px;
+    height: 600px;
+    position: relative;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.header {
+    font-size: 30px;
+    color: rgb(221, 221, 221);
+    background-color: #2B3896;
+    width: 100%;
+    height: 112px;
+    padding: 40px;
+    border-radius: 5px 5px 0 0;
+}
+
+.r {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 200px;
+    background-color: #4350AF;
+    z-index: -1;
+}
+
+.input {
+    height: 57px;
+    margin: 3px;
+    padding: 15px;
+    width: 90%;
+    border-radius: 5px 5px 0 0;
+    font-size: 16px;
+    border-bottom: 1px solid #626262;
+    background-color: #F5F5F5;
+    margin-bottom: 20px;
+    color: black;
+    position: relative;
+    padding-top: 27px;
+}
+
+input:focus {
+    background-color: #DBDBDB;
+    border-bottom: 1px solid blue;
+}
+
+.placeholder {
+    position: absolute;
+    z-index: 1;
+    left: 40px;
+    top: 24px;
+    color: #626262;
+    transition: 0.1s;
+}
+
+.input:focus+.placeholder,
+.input:valid+.placeholder {
+
+    transform: translate(0px, -14px);
+    font-size: 14px;
+    transition: 0.1s;
+}
+
+.box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.button {
+    height: 55px;
+    margin: 3px;
+    margin-top: 0px;
+    padding: 8px;
+    border-radius: 5px;
+    width: 90%;
+    font-size: 16px;
+    align-items: center;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    background-color: #2B3896;
+}
+
+.button2 {
+    height: 55px;
+    margin: 3px;
+    padding: 8px;
+    border-radius: 5px;
+    width: 90%;
+    font-size: 16px;
+    align-items: center;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    color: black;
+}
+
+.err {
+    color: red;
+    left: 40px;
+    top: 65px;
+    position: absolute;
+    font-size: 12px;
+}
+
+.input.ng-touched.ng-invalid {
+    border-bottom: 1px solid red;
+}
+
+.input.ng-touched.ng-invalid+.placeholder {
+    color: red;
+}
